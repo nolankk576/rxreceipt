@@ -83,7 +83,9 @@
 .rx-line.rx-good { color: var(--rx-green); }
 .rx-line.rx-bad { color: var(--rx-red); }
 .rx-note { color: var(--rx-muted); font-size: 12px; margin-top: 1px; }
-.rx-barcode { display: block; width: 72%; height: 54px; margin: 6px auto 4px; }
+.rx-barcode { display: flex; width: 72%; height: 54px; margin: 6px auto 4px; }
+.rx-barcode i { flex: 1 1 0; display: block; }
+.rx-barcode i.on { background: var(--rx-ink); }
 .rx-ndc { text-align: center; color: var(--rx-muted); font-size: 12px; letter-spacing: .08em; }
 .rx-foot { text-align: center; color: var(--rx-muted); font-size: 11px; letter-spacing: .06em; margin-top: 8px; }
 

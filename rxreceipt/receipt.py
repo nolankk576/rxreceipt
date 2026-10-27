@@ -110,11 +110,10 @@ def barcode_modules(ndc: str) -> str:
     return "101" + body + "101"
 
 
-def barcode_svg(ndc: str, height: int = 56) -> str:
-    mods = barcode_modules(ndc)
-    rects = [f'<rect x="{i}" y="0" width="1" height="{height}"/>' for i, b in enumerate(mods) if b == "1"]
-    return (f'<svg class="rx-barcode" viewBox="0 0 {len(mods)} {height}" preserveAspectRatio="none" '
-            f'aria-hidden="true" fill="{INK}">{"".join(rects)}</svg>')
+def barcode_html(ndc: str) -> str:
+    """Decorative barcode as plain divs (Streamlit's st.html strips inline SVG)."""
+    bars = "".join(f'<i class="{"on" if b == "1" else "off"}"></i>' for b in barcode_modules(ndc))
+    return f'<div class="rx-barcode" aria-hidden="true">{bars}</div>'
 
 
 # --- HTML ----------------------------------------------------------------
@@ -135,7 +134,7 @@ def render_html(lines: list[Line], ndc: str | None, as_of: str, paper_note: str 
                         f'<span class="rx-value">{e(ln.value)}</span></div>{note}')
     code = ""
     if ndc:
-        code = f'{barcode_svg(ndc)}<div class="rx-ndc">NDC {e(fmt_ndc(ndc))}</div>'
+        code = f'{barcode_html(ndc)}<div class="rx-ndc">NDC {e(fmt_ndc(ndc))}</div>'
     return f"""
 <div class="rx-receipt" role="figure" aria-label="Prescription price receipt">
   <div class="rx-head">
