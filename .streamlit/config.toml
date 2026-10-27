@@ -1,0 +1,23 @@
+[theme]
+base = "light"
+primaryColor = "#141414"
+backgroundColor = "#FAF8F3"
+secondaryBackgroundColor = "#F1EDE4"
+textColor = "#141414"
+borderColor = "#E0DACD"
+linkColor = "#141414"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap, sans-serif"
+codeFont = "IBM Plex Mono:https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap, monospace"
+headingFontWeights = [800, 700, 700, 600, 600, 600]
+baseRadius = "10px"
+
+[client]
+# Visitors see a short generic message, never a stack trace.
+showErrorDetails = "none"
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true
